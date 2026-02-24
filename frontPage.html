@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading  + Scroll</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Serif TC', serif;
+      background-color: auto;
+      overflow-x: hidden;
+      height: 100%;
+      letter-spacing: 0.09em;
+    }
+
+    #loading-wrapper {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 9999;
+      overflow: hidden;
+    }
+    .loading-panel {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      background-color: #630101;
+      transition: transform 1s ease;
+      z-index: 2;
+    }
+    #loading-left { left: 0; transform: translateX(0); }
+    #loading-right { right: 0; transform: translateX(0); }
+    #loading-wrapper.open #loading-left { transform: translateX(-100%); }
+    #loading-wrapper.open #loading-right { transform: translateX(100%); }
+
+    #loading-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      color: white;
+      font-size: 20px;
+      letter-spacing: 0.15em;
+      opacity: 1;
+      transition: opacity 1s ease, transform 1s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    #loading-wrapper.fade-text #loading-text {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+    #loading-text img {
+      width: 50px;
+      height: auto;
+    }
+    #loading-text span {
+      font-size: 1.5vw;
+    }
+
+    .video-section {
+      width: 100%;
+      padding-bottom: 56.25%;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-section iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .intro-text-section {
+      background-color: #031d06;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 6vw;
+      letter-spacing: 0.3em;
+      line-height: 1.8;
+    }
+    .intro-text-section .line{
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+      margin: 12px 0;
+    }
+    .intro-text-section .line.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (min-width: 768px) {
+      .intro-text-section { font-size: 20px; }
+    }
+.image-stack {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.image-stack .bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.image-stack .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  pointer-events: none;
+}
+.intro-text-section {
+  margin-bottom: 0; 
+  padding-bottom: 60px; 
+}
+
+.image-stack {
+  margin-top: 0; 
+}
+
+.image-stack img {
+  display: block; 
+}
+.slick-dots {
+  visibility: hidden;
+}
+
+  </style>
+
+<script type="module">
+    import "https://font.emtech.cc/emfont.js";
+    emfont.init();
+</script>
+
+</head>
+<body>
+  <!-- Loading 畫面 -->
+  <div id="loading-wrapper">
+    <div id="loading-left" class="loading-panel"></div>
+    <div id="loading-right" class="loading-panel"></div>
+    <div id="loading-text">
+      <img src="https://raw.githubusercontent.com/sonoshop/shop-img/1074881a31b38bd6404c31f724e9569a84d0dcaf/SONO_LOGO.svg" alt="Loading Logo" />
+      <span>Sono in Italia</span>
+    </div>
+  </div>
+
+  <section class="video-section">
+    <iframe
+      src="https://player.vimeo.com/video/1092037028?h=6199167711&autoplay=1&muted=1&loop=1&background=1"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <section class="intro-text-section emfont-ChenYuLuoYan" id="intro-text-section">
+    <div class="line">SONO IN ITALIA </div>
+    <div class="line">義大利語意為「我在義大利」</div>
+    <div class="line">這不僅是一句話</div>
+    <div class="line">更是一種生活態度</div>
+    </section>
+
+
+
+  </section>
+    <!--<section class="intro-text-section emfont-GenRyuMinTW" id="intro-text-section">
+    <div class="line">我們相信</div>
+    <div class="line">美好生活是來自</div>
+    <div class="line">對細節的堅持</div>
+    <div class="line">與對品質的熱愛</div>
+    </section>-->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+     
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').classList.add('fade-text');
+      }, 1500);
+
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').classList.add('open');
+      }, 2000);
+
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').style.display = 'none';
+
+        const lines = document.querySelectorAll('#intro-text-section .line,intro-pic-section');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            } else {
+              entry.target.classList.remove('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        lines.forEach(line => observer.observe(line));
+      }, 3000);
+    });
+
+  $('.slide-2').slick({
+    arrows: false,
+    dots: true,
+    infinite: true,
+    autoplaySpeed: 2500, //播放速度 毫秒
+    autoplay: true,
+  });
+</script>
+</body>
