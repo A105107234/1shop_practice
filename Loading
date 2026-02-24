@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loading</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: auto; 
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    #loading-wrapper {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: 9999;
+      overflow: hidden;
+      background-color: auto; 
+    }
+
+    .loading-panel {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      transition: transform 1s ease;
+      z-index: 2;
+      box-shadow: 0 0 0px rgba(0,0,0,0.3);
+    }
+
+    #loading-left {
+      left: 0;
+      background-color: #031d06; 
+      transform: translateX(0);
+    }
+    #loading-right {
+      right: 0;
+      background-color: #031d06; 
+      transform: translateX(0);
+    }
+
+    #loading-wrapper.open #loading-left {
+      transform: translateX(-100%);
+    }
+
+    #loading-wrapper.open #loading-right {
+      transform: translateX(100%);
+    }
+
+    #loading-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      color: white;
+      font-size: 20px;
+      letter-spacing: 0.15em;
+      opacity: 1;
+      transition: opacity 1s ease, transform 1s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #loading-wrapper.fade-text #loading-text {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+
+    #loading-text img {
+      width: 60px;
+      height: auto;
+    }
+
+    #loading-text span {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!--  Loading  -->
+  <div id="loading-wrapper">
+    <div id="loading-left" class="loading-panel"></div>
+    <div id="loading-right" class="loading-panel"></div>
+    <div id="loading-text">
+      <img src="https://raw.githubusercontent.com/sonoshop/shop-img/1074881a31b38bd6404c31f724e9569a84d0dcaf/SONO_LOGO.svg" alt="Logo" />
+      <span>Sono in Italia</span>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').classList.add('fade-text');
+      }, 1500); 
+
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').classList.add('open');
+      }, 2000); 
+
+      setTimeout(() => {
+        document.getElementById('loading-wrapper').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 3000); 
+    });
+  </script>
+
+</body>
+</html>
