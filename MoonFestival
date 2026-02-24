@@ -1,0 +1,295 @@
+<style>
+  .intro-block {
+    background-color:  #121b31;
+    color: #ffffff;
+    line-height: 1.8;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 4vw;
+    overflow: hidden;
+    letter-spacing: 0.1em;
+  }
+
+  .intro-line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .intro-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-break {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .intro-block {
+      font-size: 3.8vw;
+    }
+    .mobile-break {
+      display: inline;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .intro-block {
+      font-size: 20px;
+    }
+  }
+</style>
+
+<div class="intro-block" id="intro-animated">
+  <div class="intro-line">
+中秋佳節，義式好禮一次擁有。<br>
+ELENA 包款展現時尚氣質，<br>
+ERBA LOGICA 花草茶帶來療癒茶香，<br>
+時尚與茶香的雙重奏，讓你的中秋時光更美好！
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lines = document.querySelectorAll('#intro-animated .intro-line');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    lines.forEach(line => observer.observe(line));
+  });
+</script>
+
+<style>
+  /* 背景 */
+  .lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none; /* 預設隱藏 */
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  /* 放大的圖片 */
+  .lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+</style>
+
+<!-- 原始圖片 -->
+<div class="herbal_banner">
+  <img class="d-block w-100" 
+       src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_.jpg"
+       alt="Herbal Banner"
+       style="cursor:pointer"
+       onclick="openLightbox(this.src)">
+</div>
+
+<!-- 放大彈窗 -->
+<div id="lightbox" class="lightbox-overlay" onclick="closeLightbox()">
+  <img id="lightbox-img" src="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
+
+
+<div class="slide-1">
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_01.jpg"></div>
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_02.jpg"></div>
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_03.jpg"></div>
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_04.jpg"></div>
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_05.jpg"></div>
+  <div><img class="d-block w-100 popup-img" src="https://cdn.jsdelivr.net/gh/sonoshop/sono_moon@main/herbal_06.jpg"></div>
+</div>
+
+<!-- 彈窗 -->
+<div id="popup" class="popup">
+  <span class="close">×</span>
+  <span class="nav prev">‹</span>
+  <img class="popup-content" id="popup-img">
+  <span class="nav next">›</span>
+</div>
+
+<style>
+/* 彈窗背景 */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 彈出的圖片 */
+.popup-content {
+  max-width: 90%;
+  max-height: 90%;
+  animation: zoomIn 0.3s ease;
+  border-radius: 8px;
+}
+
+/* 關閉按鈕 */
+.popup .close {
+  position: absolute;
+  top: 20px; right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 左右切換按鈕 */
+.popup .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+}
+
+.popup .prev { left: 20px; }
+.popup .next { right: 20px; }
+
+/* 放大動畫 */
+@keyframes zoomIn {
+  from {transform: scale(0.5); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+<style>
+/* 彈窗背景 */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+/* 彈出的圖片 */
+.popup-content {
+  max-width: 90%;
+  max-height: 90%;
+  animation: zoomIn 0.3s ease;
+  border-radius: 8px;
+}
+
+/* 關閉按鈕 */
+.popup .close {
+  position: absolute;
+  top: 20px; right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 左右切換按鈕 */
+.popup .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  background: rgba(0,0,0,0); /* 半透明背景讓點擊範圍更清楚 */
+  border-radius: 50%;
+}
+
+.popup .prev { left: 5%; }   /* 移到圖片外側 */
+.popup .next { right: 5%; }
+
+/* 手機板調整 */
+@media (max-width: 768px) {
+  .popup .nav {
+    font-size: 40px;
+    padding: 6px;
+  }
+  .popup .prev { left: 2%; }
+  .popup .next { right: 2%; }
+}
+
+/* 放大動畫 */
+@keyframes zoomIn {
+  from {transform: scale(0.5); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+</style>
+
+</style>
+
+<script>
+  $('.slide-1').slick({
+    arrows: false,
+    dots: true,
+    infinite: true,
+    autoplaySpeed: 3000,
+    autoplay: true,
+  });
+
+  // 彈窗功能
+  const popup = document.getElementById("popup");
+  const popupImg = document.getElementById("popup-img");
+  const closeBtn = document.querySelector(".popup .close");
+  const prevBtn = document.querySelector(".popup .prev");
+  const nextBtn = document.querySelector(".popup .next");
+  const images = Array.from(document.querySelectorAll(".popup-img"));
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    popupImg.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      popup.style.display = "flex";
+      showImage(index);
+    });
+  });
+
+  closeBtn.onclick = () => popup.style.display = "none";
+  popup.onclick = (e) => { if(e.target === popup) popup.style.display = "none"; }
+  prevBtn.onclick = (e) => { e.stopPropagation(); showImage(currentIndex - 1); }
+  nextBtn.onclick = (e) => { e.stopPropagation(); showImage(currentIndex + 1); }
+</script>
