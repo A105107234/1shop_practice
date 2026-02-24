@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OLIDI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Serif TC', serif;
+      background-color: auto;
+      letter-spacing: 0.2em
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      vertical-align: bottom;
+    }
+
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      background-image: url("https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/ORIDILANGA_BANNER.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .banner .logo {
+      position: absolute;
+      top: 15%;
+      left: 73%;
+      transform: translateX(-50%);
+      width: 450px;
+      height: auto;
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+      animation-delay: 0.2s;
+    }
+    
+    .lii {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+ line-height:1.6;
+}
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in-img,
+    .fade-in-text,
+    .fade-in-question {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+      will-change: opacity, transform;
+    }
+
+    .fade-in-img.visible,
+    .fade-in-text.visible,
+    .fade-in-question.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-block {
+      /*max-width: 700px;*/    
+      margin: 0 auto;
+      background-color: #031d06;
+      color: #ffffff;
+      text-align: center;
+      padding: 60px 80px;
+      font-size: 20px;
+      line-height: 1.6;
+      letter-spacing: 0.3em;
+    }
+
+    .faq-section {
+      background-color: #630101;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .accordion {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ffffff55;
+      padding: 15px 0;
+    }
+
+    .accordion-question {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      color: inherit;
+      width: 100%;
+      text-align: left;
+      padding: 0;
+    }
+
+    .accordion-icon {
+      font-size: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-answer {
+      font-size: 16px;
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 10px;
+      background-color: #4a0000;
+      padding: 10px 15px;
+    }
+
+    .accordion-answer.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .accordion-question.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .mobile-break {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .banner {
+        height: 250px;
+      }
+
+      .banner .logo {
+        width: 250px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .intro-block {
+        max-width: 768px;
+        font-size: 14px;
+        /*font-weight:400;*/
+        padding: 30px 25px;
+      }
+
+      .mobile-break {
+        display: inline;
+      }
+
+      .accordion-question {
+        font-size: 18px;
+      }
+
+      .accordion-answer {
+        font-size: 15px;
+      }
+
+      .accordion-icon {
+        font-size: 20px;
+      }
+}
+     
+.marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: #031d06;
+      color: #fff;
+      padding: 20px;
+      font-family: 'Noto Sans', sans-serif; 
+    }
+
+    .marquee-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 20s linear infinite;
+      font-size: 4vw;
+      letter-spacing: 0.2em;
+      line-height: 1.6;
+      animation-play-state: running;
+      font-family: inherit;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @media (min-width: 481px) {
+      .marquee-content {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .marquee-content {
+        font-size: 3.8vw;
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+      }
+    }
+ 
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <img
+      class="logo"
+      src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/ORIDILANGA_LOGO.png"
+      alt="OLIDI Logo"
+    />
+  </div>
+
+  <div class="intro-block">
+    <div class="fade-in-text">
+     Ori di Langa <span class="mobile-break"><br></span>是一個義大利職人手工品牌，<br>致力於提升這片土地代表性食材的價值<span class="mobile-break"><br></span>並結合松露的魔法，<br>創造出一道道美味佳餚。
+    </div>
+  </div>
+
+  <img
+    src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/OLIDI_01.png"
+    alt="OLIDI Image 1"
+    class="fade-in-img"
+  />
+
+  <div class="intro-block">
+    <div class="fade-in-text">
+     想要打破<br>「松露只能是少數人專屬奢侈品」的印象<br>讓每一張餐桌都能輕鬆享受松露的美好
+    </div>
+  </div>
+
+  <img
+    src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/OLIDI_02.png"
+    alt="OLIDI Image 2"
+    class="fade-in-img"
+  />
+  
+<div class="intro-block">
+    <div class="fade-in-text">
+    我們的食譜源自<br>對「朗格」  (Langhe)的熱愛<br>這是義大利皮埃蒙特地區<br>一塊獨特的土地<br><br>朗格地區擁有起伏的葡萄園、<br>松露森林與榛果林<br>這片位於皮埃蒙特南方的美麗山丘<br>因景色與天然資源而成為世界遺產<br>也正是我們一切料理靈感與原料的起點
+    </div>
+  </div>
+
+   <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/OLD_03.png"
+       alt="OLIDI Image 3"
+       class="fade-in-img"
+       />
+  
+  <div class="intro-block">
+    <div class="fade-in-text">
+   我們的專業：<br><br>
+<ul class="lii">
+  <li>超過40年的義式美食經驗</li>
+  <li>嚴選義大利最優質的原料</li>
+  <li>每一道料理皆由職人用心手工製作</li>
+  <li>不斷投入研發與創新「凍乾技術」</li>
+      </ul>
+這是目前全球最先進的松露自然保存方法<br>
+能保留新鮮松露的原始香氣、營養與口感<br>
+就像剛採收一樣
+  
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-question fade-in-question">
+          Q：松露產品會不會有腥味？
+          <span class="accordion-icon">＋</span>
+        </div>
+        <div class="accordion-answer">
+          <br>A：<span class="mobile-break"><br></span>Ori di Langa 使用天然松露與冷壓橄欖油，<br>
+香氣溫潤不刺鼻。<br><br>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-question fade-in-question">
+          Q：素食者可以食用嗎？
+          <span class="accordion-icon">＋</span>
+        </div>
+        <div class="accordion-answer">
+         <br> A：<span class="mobile-break"><br></span>多數調味產品為全素，請依包裝標示為準。<br><br>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <div class="accordion-question fade-in-question">
+          Q：開封後怎麼保存？
+          <span class="accordion-icon">＋</span>
+        </div>
+        <div class="accordion-answer">
+          <br>A：<span class="mobile-break"><br></span>建議冷藏，並於 7~10 天內食用完畢。<br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<! --跑馬燈-- >
+ <div class="marquee-container">
+    <div class="marquee-content">
+  【限時優惠】- ORI DI LANGA 松露食品 專屬賣場 滿千免運 ! 
+    </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+
+      document.querySelectorAll('.fade-in-img, .fade-in-text, .fade-in-question').forEach(el => {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll('.accordion-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('.accordion-icon');
+
+          answer.classList.toggle('open');
+          question.classList.toggle('open');
+
+          icon.textContent = answer.classList.contains('open') ? '－' : '＋';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
