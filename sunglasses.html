@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SONO精品墨鏡_品牌頁</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Serif TC', serif;
+      background-color: auto; 
+      color: #333;
+      letter-spacing: 0.15em;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .banner-container {
+      position: relative;
+      width: 100%;
+      background-color: #eee;
+    }
+
+    @keyframes fadeInLogo {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .intro-block {
+      background-color: #031d06; 
+      color: #ffffff;
+      text-align: center;
+      padding: 80px 25px;
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .faq-section {
+      background-color: #5c1619; 
+      color: #ffffff;
+      padding: 80px 20px;
+    }
+
+    .faq-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      display: inline-block;
+      padding-bottom: 10px;
+      left: 50%;
+      position: relative;
+      transform: translateX(-50%);
+    }
+
+    .accordion {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .accordion-question {
+      padding: 25px 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .accordion-icon {
+      transition: transform 0.3s;
+      font-size: 1.5rem;
+    }
+
+    .accordion-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      background-color: rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
+      padding: 0 15px;
+    }
+
+    .accordion-answer.open {
+      max-height: 300px; 
+      padding: 20px 15px;
+    }
+
+    .accordion-question.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden; 
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+}
+
+.slider-wrapper img {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.slider-prev, .slider-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  border: none;
+  padding: 15px 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+.slider-prev { left: 10px; }
+.slider-next { right: 10px; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active { background: #fff; }
+
+    @media (max-width: 768px) {
+      .banner-container .logo {
+        width: 50%;
+        top: 10%;
+        right: 25%;
+        left: 25%;
+      }
+      .intro-block {
+        font-size: 1rem;
+        padding: 60px 20px;
+      }
+      .accordion-question { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner-container">
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SUNGLASSES.png" alt="SUNGLASSES Banner" />
+  </div>
+
+  <div class="intro-block">
+    <div class="fade-in">
+      這裡是SONO的精品墨鏡專區。<br>
+      我們挑選了不同輪廓、不同風格的款式，<br>可以依照需求與喜好做選擇，從日常百搭到造型加分找到屬於你的墨鏡。
+    </div>
+  </div>
+
+ <div class="slider-container fade-in">
+  <div class="slider-wrapper">
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SG-1.png" alt="Slide 1" />
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SG-4.png" alt="Slide 2" />
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SG-6.png" alt="Slide 3" />
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SG-2.png" alt="Slide 4" />
+    <img src="https://cdn.jsdelivr.net/gh/sonoshop/shop-img@main/SG-5.png" alt="Slide 5" />
+    </div>
+  
+  <button class="slider-prev">&#10094;</button>
+  <button class="slider-next">&#10095;</button>
+  
+  <div class="slider-dots">
+  </div>
+</div>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      document.querySelectorAll('.accordion-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const isOpen = answer.classList.contains('open');
+
+          document.querySelectorAll('.accordion-answer').forEach(a => a.classList.remove('open'));
+          document.querySelectorAll('.accordion-question').forEach(q => q.classList.remove('open'));
+
+          if (!isOpen) {
+            answer.classList.add('open');
+            question.classList.add('open');
+            question.querySelector('.accordion-icon').textContent = '－';
+          } else {
+            answer.classList.remove('open');
+            question.classList.remove('open');
+            question.querySelector('.accordion-icon').textContent = '＋';
+          }
+        });
+      });
+    });
+window.addEventListener('load', () => {
+  const container = document.querySelector('.slider-container');
+  const wrapper = document.querySelector('.slider-wrapper');
+  const slides = document.querySelectorAll('.slider-wrapper img');
+  const dotsContainer = document.querySelector('.slider-dots');
+  const prevBtn = document.querySelector('.slider-prev');
+  const nextBtn = document.querySelector('.slider-next');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      updateSlider();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlider() {
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  let autoPlay = setInterval(nextSlide, 4000);
+
+  container.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  container.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(nextSlide, 4000);
+  });
+});
+  </script>
+</body>
+</html>
